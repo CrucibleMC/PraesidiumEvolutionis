@@ -1,0 +1,11 @@
+// Add any additional repositories for your dependencies here
+
+repositories {
+    maven {
+        name = 'jitpack'
+        url = 'https://www.jitpack.io'
+        content {
+            includeGroup('com.github.CrucibleMC') // Only allow crucible from jitpack
+        }
+    }
+}

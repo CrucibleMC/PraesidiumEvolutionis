@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8.5-GTNH",
+  "package": "io.github.cruciblemc.praesidium_evolutionis.mixins",
+  "refmap": "mixins.praesidium-evolutionis.refmap.json",
+  "target": "@env(DEFAULT)",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "forge.tracking.MixinEntity",
+    "forge.tracking.MixinEntityThrowable",
+    "forge.tracking.MixinTileEntity"
+  ],
+  "client": [],
+  "server": []
+}
