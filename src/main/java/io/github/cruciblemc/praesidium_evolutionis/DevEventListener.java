@@ -1,6 +1,7 @@
 package io.github.cruciblemc.praesidium_evolutionis;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import io.github.cruciblemc.praesidium_evolutionis.api.SafeBukkit;
 import net.minecraft.init.Items;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
@@ -17,7 +18,7 @@ public class DevEventListener {
             if (tile != null) {
                 var nbt = new NBTTagCompound();
                 tile.writeToNBT(nbt);
-                e.entityPlayer.addChatMessage(new ChatComponentText(nbt.toString()));
+                e.entityPlayer.addChatMessage(new ChatComponentText(SafeBukkit.REF.NBTTagToSNBT(nbt)));
             }
         }
     }
