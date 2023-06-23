@@ -11,5 +11,5 @@ dependencies {
     compileOnly("org.apiguardian:apiguardian-api:1.1.2")
 
     // Configuration api
-    implementation 'com.github.CrucibleMC:Omniconfig:v1.0.0:mc1.7.10-dev'
+    implementation 'com.github.CrucibleMC:Omniconfig:1.0.0:mc1.7.10-dev'
 }
