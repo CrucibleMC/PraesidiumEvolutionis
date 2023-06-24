@@ -4,7 +4,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.26'
 
     // CraftBukkit dummy classes mapped to forge names
-    compileOnly 'com.github.CrucibleMC:Crucible:16017a93b1'
+    compileOnly 'com.github.CrucibleMC:Crucible:4a4c592b5c'
 
     // Fancy api declaration
     compileOnly('org.jetbrains:annotations:23.0.0')
