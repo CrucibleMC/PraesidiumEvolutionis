@@ -100,7 +100,9 @@ public interface SafeBukkit {
      * @return An {@link net.minecraft.item.ItemStack} clone of the Bukkit stack.
      * @throws UnsupportedOperationException if Bukkit is missing.
      */
-    @NotNull ItemStack toForgeStack(@NotNull Object bukkitStack);
+    @NotNull default ItemStack toForgeStack(@NotNull Object bukkitStack) {
+        throw new UnsupportedOperationException("Bukkit is needed for this operation");
+    }
 
     /**
      * Copies and converts a Forge stack into a Bukkit stack.
@@ -109,7 +111,21 @@ public interface SafeBukkit {
      * @return An {@link org.bukkit.inventory.ItemStack} clone of the Forge stack.
      * @throws UnsupportedOperationException if Bukkit is missing.
      */
-    @NotNull Object toBukkitStack(@NotNull ItemStack minecraftStack);
+    @NotNull default Object toBukkitStack(@NotNull ItemStack minecraftStack) {
+        throw new UnsupportedOperationException("Bukkit is needed for this operation");
+    }
+
+    /**
+     * Gets the bukkit entity from a minecraft entity.
+     *
+     * @param minecraftEntity A minecraft entity
+     * @return An instance of a {@link org.bukkit.entity.Entity} subclass representing the provided entity.
+     * Bukkit entities from modded entities will always be
+     * {@link io.github.crucible.entity.CraftCustomEntity} when running on Crucible.
+     */
+    @NotNull default Object getBukkitEntity(@NotNull Entity minecraftEntity) {
+        throw new UnsupportedOperationException("Bukkit is needed for this operation");
+    }
 
     /**
      * Converts an NBTTagCompound to a String representation.
@@ -189,16 +205,6 @@ final class WithoutBukkit implements SafeBukkit {
     @Override
     public @NotNull String getPermissionString(@NotNull EntityPlayerMP player, @NotNull String node, @NotNull String defaultValue) {
         return defaultValue;
-    }
-
-    @Override
-    public @NotNull ItemStack toForgeStack(@NotNull Object bukkitStack) {
-        throw new UnsupportedOperationException("Bukkit is needed for this operation");
-    }
-
-    @Override
-    public @NotNull Object toBukkitStack(@NotNull ItemStack minecraftStack) {
-        throw new UnsupportedOperationException("Bukkit is needed for this operation");
     }
 }
 
@@ -304,5 +310,10 @@ final class WithBukkit implements SafeBukkit {
         } else {
             return SafeBukkit.super.NBTTagFromSNBT(tag);
         }
+    }
+
+    @Override
+    public @NotNull Object getBukkitEntity(@NotNull Entity minecraftEntity) {
+        return getBukkitEntity.invoke(minecraftEntity);
     }
 }
